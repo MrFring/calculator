@@ -43,12 +43,33 @@ namespace MyCal2
 
         private void buttonDiv_Click(object sender, EventArgs e)
         {
-            var x = int.Parse(this.textBoxOp1.Text);
-            var y = int.Parse(this.textBoxOp2.Text);
+            var x = double.Parse(this.textBoxOp1.Text);
+            var y = double.Parse(this.textBoxOp2.Text);
             if (y != 0) {
                 var z = x / y;
                 this.labelResult.Text = z.ToString();
-            }            
+            }
+            else
+            {
+                this.labelResult.Text = "The divisor can't be zero.";
+            }
+        }
+
+        private void buttonTri_Click(object sender, EventArgs e)
+        {
+            var a = double.Parse(this.textBoxOp1.Text);
+            var b = double.Parse(this.textBoxOp2.Text);
+            var c = double.Parse(this.textBoxOp3.Text);
+            double p = (a + b + c) / 2;
+            if (((a + b) >= c)&& ((a + c) >= b)&&((b + c) >= a))
+            {
+                var s = Math.Sqrt(p * (p - a) * (p - b) * (p - c));
+                this.labelResult.Text = s.ToString();
+            }
+            else
+            {
+                this.labelResult.Text = "The length of these three sides can't form a triangle.";
+            }
         }
     }
 }
